@@ -40,22 +40,22 @@
         //     });
         // }
         function loadLogs() {
-      fetch('../data/logs.json')
-        .then(response => response.json())
-        .then(data => {
-          const logList = document.querySelector('.log-list');
-          logList.innerHTML = '';
-          data.forEach(log => {
-            const logPara = document.createElement('p');
-            logPara.innerText = log.message;
-            logList.appendChild(logPara);
-          });
-        })
-        .catch(error => {
-          document.querySelector('.log-list').innerText = 'Failed to load logs.';
-          console.error('Error loading logs:', error);
-        });
-    }
+            fetch('../data/logs.json')
+                .then(response => response.json())
+                .then(data => {
+                const logList = document.querySelector('.log-list');
+                logList.innerHTML = '';
+                data.forEach(log => {
+                    const logPara = document.createElement('p');
+                    logPara.innerText = log.message;
+                    logList.appendChild(logPara);
+                });
+                })
+                .catch(error => {
+                document.querySelector('.log-list').innerText = 'Failed to load logs.';
+                console.error('Error loading logs:', error);
+                });
+        }
         window.addEventListener('load', () => {
             setTimeout(loadLogs, 2000);
         })
