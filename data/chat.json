@@ -1,0 +1,27 @@
+[
+    {
+        "channel-name" : "#doomchat",
+        "channel-contents" : [
+            "random chat 1",
+            "random chat 2"
+        ]
+    },
+    {
+        "channel-name" : "#starwars",
+        "channel-contents" : [
+            "Luke, I am your father",
+            "May the force be with you",
+            "I have a bad feeling about this",
+            "Do. Or do not. There is no try."
+        ]
+    },
+    {
+        "channel-name" : "#harrypotter",
+        "channel-contents" : [
+            "Yer a wizard Harry.",
+            "It does not do well to dwell on dreams and forget to live.",
+            "Fear of a name only increases fear of the thing itself.",
+            "I solemnly swear I am up to no good."
+        ]
+    }
+]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+            color: greenyellow;
+            font-family: monospace;
+            margin: 0;
+        }
+        .heading {
+            background-color: darkslategrey;
+            margin: 0;
+            padding: 4px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-screen">
+        <div class="heading">
+            Server Log
+        </div>
+        <div class="log-list">
+            Loading logs...
+        </div>
+    </div>
+    <script>
+        // function loadLogs() {
+        //     data = JSON.parse(File.open('../data/logs.json'));
+        //     const logList = document.getElementsByClassName('log-list');
+        //     logList.innerHTML = '';
+        //     data.array.forEach(log => {
+        //         const logPara = document.createElement('p');
+        //         logPara.innerHTML = '${log.message}';
+        //         logList.appendChild(logPara);
+        //     });
+        // }
+        function loadLogs() {
+      fetch('../data/logs.json')
+        .then(response => response.json())
+        .then(data => {
+          const logList = document.querySelector('.log-list');
+          logList.innerHTML = '';
+          data.forEach(log => {
+            const logPara = document.createElement('p');
+            logPara.innerText = log.message;
+            logList.appendChild(logPara);
+          });
+        })
+        .catch(error => {
+          document.querySelector('.log-list').innerText = 'Failed to load logs.';
+          console.error('Error loading logs:', error);
+        });
+    }
+        window.addEventListener('load', () => {
+            setTimeout(loadLogs, 2000);
+        })
+    </script>
+</body>
+</html>

@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background-color: #000010;
+            color: whitesmoke;
+            font-family: monospace;
+        }
+
+        .terminal-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .window {
+            text-align: center;
+            z-index: 1;
+        }
+
+        input {
+            background-color: #000010;
+            color: lawngreen;
+            border: solid 2px lawngreen;
+            margin: 15px;
+            padding: 5px;
+        }
+
+        .logs {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+    </style>
 </head>
+
 <body>
     <div class="terminal-screen">
         <div class="window">
-            <input type="text" placeholder="Username" id="username" name="username">
+            <input type="text" placeholder="Username" id="username" name="username"><br/>
             <input type="password" placeholder="Password" id="password" name="password">
         </div>
-    </div>
-    <div class="logs">
-        <a href="irc.html">View Server Logs</a>
+        <div class="logs">
+            <a href="server-log.html">View Server Logs</a>
+        </div>
     </div>
 </body>
+
 </html>
