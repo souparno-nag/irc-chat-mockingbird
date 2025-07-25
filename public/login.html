@@ -16,6 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             height: 100vh;
             position: relative;
         }
@@ -23,6 +24,15 @@
         .window {
             text-align: center;
             z-index: 1;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* semi-transparent background */
+            padding: 30px;
+            border: 2px solid #00ffcc;
+            /* neon teal border */
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ffff;
+            /* glowing effect */
+            margin-top: 4%;
         }
 
         input {
@@ -31,6 +41,10 @@
             border: solid 2px lawngreen;
             margin: 15px;
             padding: 5px;
+            width: 200px;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 0 10px lawngreen;
         }
 
         .logs {
@@ -39,14 +53,54 @@
             right: 20px;
             z-index: 2;
         }
+
+        a {
+            color: lawngreen;
+            text-shadow: 0 0 5px lawngreen;
+            font-size: 14px;
+        }
+
+        a:hover {
+            color: rgb(81, 143, 19);
+        }
+
+        a:visited {
+            color: #ffaa00;
+            text-shadow: 0 0 5px #ffaa00;
+        }
+
+        button {
+            background-color: #000010;
+            color: #00ffff;
+            /* Neon cyan */
+            border: 2px solid #00ffff;
+            font-family: monospace;
+            font-size: 16px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0 0 5px #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+            transition: all 0.3s ease;
+            margin: 12px;
+            margin-bottom: 6px;
+        }
+
+        button:hover {
+            background-color: #001f2f;
+            box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+            color: #ffffff;
+        }
     </style>
 </head>
 
 <body>
     <div class="terminal-screen">
+        <h2 style="color: white; text-shadow: 0 0 5px red;">Login</h2>
         <div class="window">
-            <input type="text" placeholder="Username" id="username" name="username"><br/>
-            <input type="password" placeholder="Password" id="password" name="password">
+            <input type="text" placeholder="Username" id="username" name="username"><br />
+            <input type="password" placeholder="Password" id="password" name="password"><br />
+            <button>Enter</button>
         </div>
         <div class="logs">
             <a href="server-log.html">View Server Logs</a>
