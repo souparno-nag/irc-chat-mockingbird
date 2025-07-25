@@ -13,7 +13,12 @@
         }
 
         .terminal-window {
-            display: grids;
+            display: grid;
+            grid-template-areas: 
+                "heading heading"
+                "channels channel-chat-logs";
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: auto 1fr;
         }
 
         .heading {
@@ -21,24 +26,94 @@
             color: #000;
             padding: 5px;
             font-weight: bold;
+            font-size: 16px;
+            grid-area: heading;
         }
+
+        .channels {
+            border: 2px solid grey;
+            height: 100vh;
+            grid-area: channels;
+            text-align: center;
+        }
+
+        .channel-chat-logs {
+            grid-area: channel-chat-logs;
+            height: 100vh;
+        }
+
+        button {
+            width: 90%;
+            padding: 4px;
+            margin: 2px;
+            background-color: rgb(255, 89, 172);
+        }
+
+        button:hover {
+            background-color: aqua;
+        }
+
+        .channel-chat-logs {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .channel-chat-logs p {
+            margin: 5px 0;
+            padding: 3px;
+            text-align: left;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            background-color: rgb(177, 235, 89);
+            color: #000;
+            width: fit-content;
+            padding: 5px;
+            border-radius: 5px;
+        }  
     </style>
 </head>
 <body>
     <div class="terminal-window">
         <div class="heading">
-            Channel Names
+            Chat Room
         </div>
         <div class="channels">
             <h4>Channel Names</h4>
             <hr/>
         </div>
         <div class="channel-chat-logs">
-
+            <h3>Click on any channel to join the conversation.</h3>
         </div>
     </div>
     <script>
-        
+        function displayChannelContents(messages) {
+            const chatLog = document.querySelector('.channel-chat-logs');
+            chatLog.innerHTML = '';
+
+            messages.forEach(msg => {
+                const msgElement = document.createElement('p');
+                msgElement.textContent = msg;
+                chatLog.appendChild(msgElement);
+            })
+        }
+        const channelNameElement = document.querySelector('.channels');
+        fetch('../data/chat.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(channel => {
+                    const channelName = document.createElement('button');
+                    channelName.innerText = channel['channel-name'];
+                    channelNameElement.appendChild(channelName);
+                    const lineBreak = document.createElement('br');
+                    channelNameElement.appendChild(lineBreak);
+                    channelName.addEventListener('click', () => {
+                        displayChannelContents(channel['channel-contents']);
+                    });
+                });
+            })
+            .catch (error => {
+                console.log(error);                
+            });
     </script>
 </body>
 </html>
