@@ -97,11 +97,13 @@
 <body>
     <div class="terminal-screen">
         <h2 style="color: white; text-shadow: 0 0 5px red;">Login</h2>
-        <div class="window">
-            <input type="text" placeholder="Username" id="username" name="username"><br />
-            <input type="password" placeholder="Password" id="password" name="password"><br />
-            <button>Enter</button>
-        </div>
+        <form action="/login" method="POST">
+            <div class="window">
+                <input type="text" placeholder="Username" id="username" name="username"><br />
+                <input type="password" placeholder="Password" id="password" name="password"><br />
+                <button type="submit">Enter</button>
+            </div>
+        </form>
         <div class="logs">
             <a href="server-log.html">View Server Logs</a>
         </div>

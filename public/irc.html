@@ -174,6 +174,28 @@
         //         }
         //     }
         // })
+        document.getElementById('enter-chat-button').addEventListener('click', () => {
+            const chatInput = document.getElementById('chat-input');
+            if (!currentChannel || chatInput.value.trim() === '') return;
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    channelName: currentChannel.innerText,
+                    message: chatInput.value.trim()
+                })
+            })
+            .then(res => {
+                if (res.ok) {
+                    chatInput.value = '';
+                    return res.text();
+                } else {
+                    alert('Failed to send message.');
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
